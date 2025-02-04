@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPESampleApp", "IPESampleApp.csproj", "{44AD5157-6B7A-4EA6-A590-A21B01018942}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternationalPhoneEntry", "..\src\InternationalPhoneEntry.csproj", "{75EEE3CC-05D5-43FB-BB20-53982728564B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44AD5157-6B7A-4EA6-A590-A21B01018942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44AD5157-6B7A-4EA6-A590-A21B01018942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44AD5157-6B7A-4EA6-A590-A21B01018942}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{44AD5157-6B7A-4EA6-A590-A21B01018942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44AD5157-6B7A-4EA6-A590-A21B01018942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44AD5157-6B7A-4EA6-A590-A21B01018942}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{75EEE3CC-05D5-43FB-BB20-53982728564B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EEE3CC-05D5-43FB-BB20-53982728564B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EEE3CC-05D5-43FB-BB20-53982728564B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EEE3CC-05D5-43FB-BB20-53982728564B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D499E92-0D8C-476F-9790-E4D87C57B42B}
+	EndGlobalSection
+EndGlobal

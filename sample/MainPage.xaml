@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IPESampleApp.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ipe="clr-namespace:InternationalPhoneEntry;assembly=InternationalPhoneEntry">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="25">
+
+            <VerticalStackLayout Spacing="0">
+                <Label Style="{StaticResource LabelStyle}" Text="Country code view only:" />
+                <ipe:CountryCodeView TwoLetterISORegionName="MX" />
+
+            </VerticalStackLayout>
+            <BoxView BackgroundColor="Gray" HeightRequest="1" />
+            <VerticalStackLayout Spacing="0">
+                <Label Style="{StaticResource LabelStyle}" Text="Country code picker:" />
+
+                <ipe:CountryPicker CloseOnSelect="True" />
+
+            </VerticalStackLayout>
+            <BoxView BackgroundColor="Gray" HeightRequest="1" />
+            <VerticalStackLayout Spacing="0">
+                <Label Style="{StaticResource LabelStyle}" Text="Country code phone editor:" />
+                <ipe:PhoneEntry CloseOnSelect="True" />
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

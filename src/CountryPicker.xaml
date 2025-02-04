@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="InternationalPhoneEntry.CountryPicker"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:ipe="clr-namespace:InternationalPhoneEntry"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="countryPicker"
+    Padding="0"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="Center">
+    <Frame.Behaviors>
+        <toolkit:TouchBehavior
+            Command="{Binding ShowPopupCommand, Source={x:Reference countryPicker}}"
+            CommandParameter="{Binding SelectedCountry, Source={x:Reference countryPicker}}"
+            PressedScale="0.9" />
+    </Frame.Behaviors>
+    <ContentView BindingContext="{Binding ., Source={x:Reference countryPicker}}">
+
+        <ipe:CountryCodeView Country="{Binding SelectedCountry}" />
+
+
+    </ContentView>
+</ContentView>

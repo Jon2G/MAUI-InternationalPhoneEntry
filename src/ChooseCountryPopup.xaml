@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="InternationalPhoneEntry.ChooseCountryPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:delayedViewMaui="clr-namespace:DelayedViewMaui;assembly=DelayedViewMaui"
+    xmlns:iep="clr-namespace:InternationalPhoneEntry"
+    xmlns:models="clr-namespace:InternationalPhoneEntry.Models"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="chooseCountryPopup"
+    CanBeDismissedByTappingOutsideOfPopup="True"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    Color="Transparent">
+    <iep:ChooseCountryPopup.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ChooseCountryPopupStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </iep:ChooseCountryPopup.Resources>
+    <delayedViewMaui:DelayedView DelayInMilliseconds="600">
+        <ContentView
+            Padding="20"
+            Background="{x:Static KnownColor.Transparent}"
+            BackgroundColor="{x:Static KnownColor.Transparent}"
+            BindingContext="{Binding ., Source={x:Reference chooseCountryPopup}}">
+            <ContentView
+                Padding="16"
+                x:DataType="iep:ChooseCountryPopup"
+                Style="{Binding PopupFrameStyle}">
+                <StackLayout Margin="0" Spacing="8">
+                    <Grid
+                        Margin="0"
+                        Padding="0"
+                        ColumnDefinitions="Auto,*,Auto"
+                        ColumnSpacing="0"
+                        HorizontalOptions="Fill">
+                        <Button
+                            Grid.Column="0"
+                            Margin="0"
+                            Padding="0"
+                            Clicked="CloseBtn_Clicked"
+                            HeightRequest="40"
+                            HorizontalOptions="Start"
+                            Style="{Binding CancelButtonStyle}"
+                            Text="{Binding CancelButtonText}"
+                            WidthRequest="70" />
+                        <Label
+                            Grid.Column="1"
+                            Margin="0"
+                            Padding="0"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Title}"
+                            VerticalTextAlignment="Center" />
+                        <Button
+                            Grid.Column="2"
+                            Margin="0"
+                            Padding="0"
+                            Clicked="ConfirmBtn_Clicked"
+                            HeightRequest="40"
+                            HorizontalOptions="End"
+                            Style="{Binding DoneButtonStyle}"
+                            Text="{Binding DoneButtonText}"
+                            WidthRequest="70" />
+                    </Grid>
+                    <BoxView
+                        BackgroundColor="{Binding SeparatorColor, Source={x:Reference chooseCountryPopup}}"
+                        HeightRequest="1"
+                        Style="{StaticResource SeparatorBoxView}" />
+                    <ContentView
+                        Margin="0"
+                        Padding="0,5"
+                        Background="Transparent">
+                        <SearchBar
+                            Margin="0"
+                            Placeholder="{Binding SearchPlaceholder}"
+                            Style="{Binding SearchBarStyle}"
+                            Text="{Binding Search}">
+                            <SearchBar.Behaviors>
+                                <toolkit:UserStoppedTypingBehavior Command="{Binding UserStoppedTypingCommand, Source={x:Reference chooseCountryPopup}}" MinimumLengthThreshold="2" />
+                            </SearchBar.Behaviors>
+                        </SearchBar>
+                    </ContentView>
+
+                    <Label
+                        Margin="0,0,0,10"
+                        FontSize="14"
+                        Text="{Binding SelectedLabelText}" />
+                    <iep:CountryCodeView Country="{Binding SelectedCountry}" />
+                    <BoxView BackgroundColor="{Binding SeparatorColor, Source={x:Reference chooseCountryPopup}}" Style="{StaticResource SeparatorBoxView}" />
+                    <Label FontSize="14" Text="{Binding CountriesListLabelText}" />
+                    <ListView
+                        CachingStrategy="RetainElement"
+                        HasUnevenRows="False"
+                        ItemTapped="ListView_ItemTapped"
+                        ItemTemplate="{Binding ListViewCountriesItemTemplate}"
+                        ItemsSource="{Binding VisibleCountries}"
+                        SelectionMode="None"
+                        SeparatorColor="{Binding SeparatorColor, Source={x:Reference chooseCountryPopup}}"
+                        SeparatorVisibility="Default" />
+                </StackLayout>
+            </ContentView>
+
+        </ContentView>
+
+    </delayedViewMaui:DelayedView>
+</toolkit:Popup>
