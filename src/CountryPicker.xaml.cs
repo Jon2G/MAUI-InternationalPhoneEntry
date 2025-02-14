@@ -1,7 +1,3 @@
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics.Metrics;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using AsyncAwaitBestPractices.MVVM;
 using CommunityToolkit.Maui.Views;
@@ -12,12 +8,10 @@ namespace InternationalPhoneEntry;
 public partial class CountryPicker : ContentView
 {
     #region Properties
-    public static readonly CountryModel DefaultCountry = CountryModel.GetCountryModelByTwoLetterISORegionName("US");
     public static readonly BindableProperty SelectedCountryProperty = BindableProperty.Create(
         nameof(SelectedCountry),
         returnType: typeof(CountryModel),
-        declaringType: typeof(CountryPicker),
-        DefaultCountry,
+        declaringType: typeof(CountryPicker), InternationalPhoneEntry.DefaultCountry,
     BindingMode.TwoWay,
         propertyChanged: SelectedCountryPropertyChanged);
 
@@ -74,7 +68,7 @@ public partial class CountryPicker : ContentView
 
     private Task ExecuteShowPopupCommand(CountryModel? selectedCountry)
     {
-        ChooseCountryPopup = new ChooseCountryPopup(selectedCountry ?? CountryPicker.DefaultCountry)
+        ChooseCountryPopup = new ChooseCountryPopup(selectedCountry ?? InternationalPhoneEntry.DefaultCountry)
         {
             CountrySelectedCommand = CountrySelectedCommand
         };

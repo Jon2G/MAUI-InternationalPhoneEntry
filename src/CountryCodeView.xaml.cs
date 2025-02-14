@@ -8,7 +8,7 @@ public partial class CountryCodeView : ContentView
         nameof(Country),
         returnType: typeof(CountryModel),
         declaringType: typeof(CountryCodeView),
-        CountryPicker.DefaultCountry,
+        InternationalPhoneEntry.DefaultCountry,
         BindingMode.TwoWay,
         propertyChanged: CountryPropertyChanged);
 
@@ -41,7 +41,7 @@ public partial class CountryCodeView : ContentView
         {
             if (bindable is CountryCodeView countryCodeView)
             {
-                countryCodeView.Country = CountryModel.GetCountryModelByTwoLetterISORegionName(newvalue.ToString());
+                countryCodeView.Country = CountryModel.GetCountryModelByTwoLetterISORegionName(newvalue.ToString()!);
             }
         }
     }
@@ -53,7 +53,7 @@ public partial class CountryCodeView : ContentView
     }
 
     public CountryCodeView()
-    {
+    { InternationalPhoneEntry.VerifyIsInited();
         InitializeComponent();
     }
 }

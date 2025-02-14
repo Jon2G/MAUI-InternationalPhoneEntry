@@ -5,8 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
     xmlns:ipe="clr-namespace:InternationalPhoneEntry"
-    x:Name="countryCodeView">
-    <ContentView BindingContext="{Binding ., Source={x:Reference countryCodeView}}">
+    x:Name="countryCodeView"
+    x:DataType="ipe:CountryCodeView">
+    <ContentView x:DataType="ipe:CountryCodeView" BindingContext="{Binding ., Source={x:Reference countryCodeView}}">
         <StackLayout
             x:DataType="ipe:CountryCodeView"
             HorizontalOptions="FillAndExpand"

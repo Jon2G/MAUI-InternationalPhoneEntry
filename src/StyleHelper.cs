@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InternationalPhoneEntry
+﻿namespace InternationalPhoneEntry
 {
     internal interface IResourcesProvider
     {
@@ -16,8 +10,7 @@ namespace InternationalPhoneEntry
 
         private static T? GetResource<T>(this ResourceDictionary obj, string key) where T : class
         {
-            object resource = default(T);
-            if (obj.TryGetValue(key, out resource))
+            if (obj.TryGetValue(key, out var resource))
             {
                 return resource as T;
             }

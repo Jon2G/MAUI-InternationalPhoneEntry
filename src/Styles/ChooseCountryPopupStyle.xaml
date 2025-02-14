@@ -46,12 +46,12 @@
 
     <!--  Popup  -->
     <Style x:Key="DoneButtonDefaultStyle" TargetType="Button">
-        <Setter Property="TextColor" Value="DarkGreen" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=DarkGreen}" />
         <Setter Property="BackgroundColor" Value="{x:Static KnownColor.Transparent}" />
     </Style>
 
     <Style x:Key="CancelButtonDefaultStyle" TargetType="Button">
-        <Setter Property="TextColor" Value="DarkRed" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=DarkRed}" />
         <Setter Property="BackgroundColor" Value="{x:Static KnownColor.Transparent}" />
     </Style>
 
@@ -60,7 +60,7 @@
         x:DataType="iep:ChooseCountryPopup"
         TargetType="BoxView">
         <Setter Property="HeightRequest" Value="1" />
-        <Setter Property="Color" Value="{Binding SeparatorColor, Source={x:Reference chooseCountryPopup}}" />
+        <Setter x:DataType="iep:ChooseCountryPopup" Property="Color" Value="{Binding SeparatorColor, Source={x:Reference chooseCountryPopup}}" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="Opacity" Value="0.1" />
     </Style>

@@ -6,13 +6,15 @@
     xmlns:behaviors="clr-namespace:InternationalPhoneEntry.Behaviors"
     xmlns:ipe="clr-namespace:InternationalPhoneEntry"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    x:Name="phoneEntry">
-    <ContentView BindingContext="{Binding ., Source={x:Reference phoneEntry}}">
+    x:Name="phoneEntry"
+    x:DataType="ipe:PhoneEntry">
+    <ContentView x:DataType="ipe:PhoneEntry" BindingContext="{Binding ., Source={x:Reference phoneEntry}}">
 
-        <Grid ColumnDefinitions="Auto,*">
+        <Grid x:DataType="ipe:PhoneEntry" ColumnDefinitions="Auto,*">
             <ipe:MinimalCountryCodeView Grid.Column="0" Country="{Binding Country}">
                 <ipe:MinimalCountryCodeView.Behaviors>
                     <toolkit:TouchBehavior
+                        x:DataType="ipe:PhoneEntry"
                         Command="{Binding ShowPopupCommand, Source={x:Reference phoneEntry}}"
                         CommandParameter="{Binding Country, Source={x:Reference phoneEntry}}"
                         PressedScale="0.9" />
@@ -25,7 +27,7 @@
                 Text="{Binding Phone}"
                 VerticalOptions="Center">
                 <Entry.Behaviors>
-                    <behaviors:PhoneMaskBehavior Country="{Binding Country, Source={x:Reference phoneEntry}}" />
+                    <behaviors:PhoneMaskBehavior x:DataType="ipe:PhoneEntry" Country="{Binding Country, Source={x:Reference phoneEntry}}" />
                 </Entry.Behaviors>
             </Entry>
         </Grid>

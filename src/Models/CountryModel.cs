@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using PhoneNumbers;
 
 namespace InternationalPhoneEntry.Models
@@ -16,10 +11,10 @@ namespace InternationalPhoneEntry.Models
 
         #region Fields
         private bool _AddCountryCode;
-        private string _flagUrl;
+        private string? _flagUrl;
         private string _countryName;
         private int _countryCode;
-        private string _twoLetterISORegionName;
+        private string? _twoLetterISORegionName;
         private int _GroupEach;
         private string? _GroupSeparator;
 
@@ -42,7 +37,7 @@ namespace InternationalPhoneEntry.Models
             set => SetProperty(ref _GroupEach, value);
         }
 
-        public string FlagUrl
+        public string? FlagUrl
         {
             get => _flagUrl;
             set => SetProperty(ref _flagUrl, value);
@@ -60,7 +55,7 @@ namespace InternationalPhoneEntry.Models
             set => SetProperty(ref _countryCode, value);
         }
 
-        public string TwoLetterISORegionName
+        public string? TwoLetterISORegionName
         {
             get => _twoLetterISORegionName;
             set => SetProperty(ref _twoLetterISORegionName, value);
@@ -68,7 +63,7 @@ namespace InternationalPhoneEntry.Models
 
         #endregion Properties
 
-        protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action onChanged = null)
+        protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action? onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
@@ -85,10 +80,8 @@ namespace InternationalPhoneEntry.Models
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;
-            if (changed == null)
-                return;
 
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            changed?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public override string ToString()
@@ -99,16 +92,16 @@ namespace InternationalPhoneEntry.Models
         #endregion
 
         public CountryModel(
-        string flagUrl,
+        string? flagUrl,
         string countryName,
         int countryCode,
-        string twoLetterISORegionName,
+        string? twoLetterISORegionName,
         int? groupEach = null,
         bool addCountryCode = true
             )
         {
             FlagUrl = flagUrl;
-            CountryName = countryName;
+            _countryName = CountryName = countryName;
             CountryCode = countryCode;
             TwoLetterISORegionName = twoLetterISORegionName;
             GroupEach = groupEach ?? DefaultGroupEach;
