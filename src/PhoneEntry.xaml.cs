@@ -35,22 +35,7 @@ public partial class PhoneEntry : ContentView
         returnType: typeof(string),
         declaringType: typeof(PhoneEntry),
         string.Empty,
-        BindingMode.TwoWay, propertyChanged: PhonePropertyChanged);
-
-    private static void PhonePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
-    {
-        if ((bindable is PhoneEntry pe))
-        {
-            pe.OnPropertyChanged(nameof(Phone));
-            var phone = newvalue?.ToString()?.Trim();
-            if (!string.IsNullOrEmpty(phone))
-            {
-                pe.PhoneNumber = PhoneNumberUtil.GetInstance().Parse(phone, pe.Country.TwoLetterISORegionName);
-                pe.OnPropertyChanged(nameof(PhoneNumber));
-            }
-        }
-    }
-
+        BindingMode.TwoWay);
 
     public string? Phone
     {
@@ -83,7 +68,6 @@ public partial class PhoneEntry : ContentView
     public ICommand ShowPopupCommand { get; }
     public ICommand CountrySelectedCommand { get; }
 
-    public PhoneNumber? PhoneNumber { get; private set; }
     private ChooseCountryPopup? ChooseCountryPopup;
     public PhoneEntry()
     {
