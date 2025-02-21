@@ -8,17 +8,19 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="countryPicker"
     Padding="0"
+    x:DataType="ipe:CountryPicker"
     HorizontalOptions="FillAndExpand"
     VerticalOptions="Center">
-    <Frame.Behaviors>
+    <ContentView.Behaviors>
         <toolkit:TouchBehavior
+            x:DataType="ipe:CountryPicker"
             Command="{Binding ShowPopupCommand, Source={x:Reference countryPicker}}"
             CommandParameter="{Binding SelectedCountry, Source={x:Reference countryPicker}}"
             PressedScale="0.9" />
-    </Frame.Behaviors>
-    <ContentView BindingContext="{Binding ., Source={x:Reference countryPicker}}">
+    </ContentView.Behaviors>
+    <ContentView x:DataType="ipe:CountryPicker" BindingContext="{Binding ., Source={x:Reference countryPicker}}">
 
-        <ipe:CountryCodeView Country="{Binding SelectedCountry}" />
+        <ipe:CountryCodeView x:DataType="ipe:CountryPicker" Country="{Binding SelectedCountry}" />
 
 
     </ContentView>

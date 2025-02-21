@@ -8,7 +8,7 @@ public partial class MinimalCountryCodeView : ContentView
         nameof(Country),
         returnType: typeof(CountryModel),
         declaringType: typeof(MinimalCountryCodeView),
-        CountryPicker.DefaultCountry,
+        InternationalPhoneEntry.DefaultCountry,
         BindingMode.TwoWay,
         propertyChanged: CountryPropertyChanged);
 
@@ -41,7 +41,7 @@ public partial class MinimalCountryCodeView : ContentView
         {
             if (bindable is MinimalCountryCodeView countryCodeView)
             {
-                countryCodeView.Country = CountryModel.GetCountryModelByTwoLetterISORegionName(newvalue.ToString());
+                countryCodeView.Country = CountryModel.GetCountryModelByTwoLetterISORegionName(newvalue.ToString()!);
             }
         }
     }

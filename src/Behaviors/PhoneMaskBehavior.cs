@@ -1,14 +1,7 @@
-﻿using CommunityToolkit.Maui.Behaviors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using InternationalPhoneEntry.Models;
 using PhoneNumbers;
-using PhoneNumberBuilder = PhoneNumbers.PhoneNumber.Builder;
 using System.Text.RegularExpressions;
 namespace InternationalPhoneEntry.Behaviors
 {
@@ -28,7 +21,7 @@ namespace InternationalPhoneEntry.Behaviors
             nameof(Country),
             returnType: typeof(CountryModel),
             declaringType: typeof(PhoneMaskBehavior),
-            CountryPicker.DefaultCountry,
+            InternationalPhoneEntry.DefaultCountry,
             BindingMode.TwoWay,
             propertyChanged: CountryPropertyChanged);
 
@@ -58,7 +51,7 @@ namespace InternationalPhoneEntry.Behaviors
 
         public CountryModel Country
         {
-            get => (CountryModel?)GetValue(CountryProperty) ?? CountryPicker.DefaultCountry;
+            get => (CountryModel?)GetValue(CountryProperty) ?? InternationalPhoneEntry.DefaultCountry;
             set => SetValue(CountryProperty, value);
         }
 

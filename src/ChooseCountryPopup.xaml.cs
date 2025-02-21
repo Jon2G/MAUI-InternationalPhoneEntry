@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Views;
 using InternationalPhoneEntry.Models;
@@ -12,7 +11,7 @@ public partial class ChooseCountryPopup : Popup, INotifyPropertyChanged, IResour
     #region Fields
 
 
-    private CountryModel _selectedCountry;
+    private CountryModel? _selectedCountry;
     private List<CountryModel>? _visibleCountries;
     #endregion Fields
 
@@ -22,10 +21,14 @@ public partial class ChooseCountryPopup : Popup, INotifyPropertyChanged, IResour
 
     public ChooseCountryPopup(CountryModel selectedCountry)
     {
+        InternationalPhoneEntry.VerifyIsInited();
         LoadCountries();
         SelectedCountry = selectedCountry;
         UserStoppedTypingCommand = new Command(UserStoppedTyping);
         InitializeComponent();
+    }
+    private void DelayedView_DelayCompleted(object sender, EventArgs e)
+    {
         if (PopupFrameStyle is null)
         {
             PopupFrameStyle = this.GetResource<Style>("PopupFrameStyle");
@@ -42,14 +45,12 @@ public partial class ChooseCountryPopup : Popup, INotifyPropertyChanged, IResour
         {
             DoneButtonStyle = this.GetResource<Style>("DoneButtonDefaultStyle");
         }
-
     }
-
     #endregion Constructors
 
     #region Properties
-    public bool CloseOnSelect {get;set;}
-    public ICommand CountrySelectedCommand { get; set; }
+    public bool CloseOnSelect { get; set; }
+    public ICommand? CountrySelectedCommand { get; set; }
     public ICommand UserStoppedTypingCommand { get; private set; }
 
     public List<CountryModel>? Countries { get; private set; }
@@ -296,7 +297,7 @@ public partial class ChooseCountryPopup : Popup, INotifyPropertyChanged, IResour
         [
             ..string.IsNullOrWhiteSpace(Search)
                 ? Countries
-                : Countries.Where(country =>
+                : Countries?.Where(country =>
                     country.CountryName.Contains(Search, StringComparison.InvariantCultureIgnoreCase))
         ];
     }
@@ -310,6 +311,11 @@ public partial class ChooseCountryPopup : Popup, INotifyPropertyChanged, IResour
             Close();
         }
     }
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        Close();
+    }
+
     #endregion Private Methods
 
 
