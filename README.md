@@ -1,7 +1,7 @@
-# MAUI-InternationalPhoneEntry
+# InternationalPhoneEntry-MAUI
 A customised Entry to input international phone number along with country code.
 
-[![NuGet version (MAUI-InternationalPhoneEntry)](https://img.shields.io/nuget/v/MAUI-InternationalPhoneEntry.svg)](https://www.nuget.org/packages/MAUI-InternationalPhoneEntry/)
+[![NuGet version (InternationalPhoneEntry-MAUI)](https://img.shields.io/nuget/v/InternationalPhoneEntry-MAUI.svg)](https://www.nuget.org/packages/InternationalPhoneEntry-MAUI/)
 
 This nuget can be used to make customised text field to take phone number input for any country along with an option to choose country code from a dropdown.
 
