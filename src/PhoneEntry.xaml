@@ -17,6 +17,7 @@
                         x:DataType="ipe:PhoneEntry"
                         Command="{Binding ShowPopupCommand, Source={x:Reference phoneEntry}}"
                         CommandParameter="{Binding Country, Source={x:Reference phoneEntry}}"
+                        IsEnabled="{Binding AllowCountrySelection}"
                         PressedScale="0.9" />
                 </ipe:MinimalCountryCodeView.Behaviors>
             </ipe:MinimalCountryCodeView>
