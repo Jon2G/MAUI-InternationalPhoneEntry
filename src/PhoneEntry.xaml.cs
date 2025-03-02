@@ -65,13 +65,38 @@ public partial class PhoneEntry : ContentView
         set => SetValue(CloseOnSelectProperty, value);
     }
 
+
+    public static readonly BindableProperty AllowCountrySelectionProperty = BindableProperty.Create(
+        nameof(AllowCountrySelection),
+        returnType: typeof(bool),
+        declaringType: typeof(PhoneEntry),
+        true,
+        BindingMode.TwoWay,
+        propertyChanged: AllowCountrySelectionPropertyChanged);
+
+    private static void AllowCountrySelectionPropertyChanged(BindableObject bindable, object oldvalue, object? newvalue)
+    {
+        if ((bindable is PhoneEntry pe))
+        {
+            pe.OnPropertyChanged(nameof(AllowCountrySelection));
+        }
+    }
+
+    public bool AllowCountrySelection
+    {
+        get => (GetValue(AllowCountrySelectionProperty) as bool?) ?? true;
+        set => SetValue(AllowCountrySelectionProperty, value);
+    }
+
     public ICommand ShowPopupCommand { get; }
     public ICommand CountrySelectedCommand { get; }
-
     private ChooseCountryPopup? ChooseCountryPopup;
     public PhoneEntry()
     {
-        ShowPopupCommand = new AsyncCommand<CountryModel>(ExecuteShowPopupCommand);
+        ShowPopupCommand = new AsyncCommand<CountryModel>(ExecuteShowPopupCommand, (b) =>
+        {
+            return AllowCountrySelection;
+        });
         CountrySelectedCommand = new Command<CountryModel>(ExecuteCountrySelectedCommand);
         InitializeComponent();
     }
