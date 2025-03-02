@@ -93,10 +93,7 @@ public partial class PhoneEntry : ContentView
     private ChooseCountryPopup? ChooseCountryPopup;
     public PhoneEntry()
     {
-        ShowPopupCommand = new AsyncCommand<CountryModel>(ExecuteShowPopupCommand, (b) =>
-        {
-            return AllowCountrySelection;
-        });
+        ShowPopupCommand = new AsyncCommand<CountryModel>(ExecuteShowPopupCommand, (b) => AllowCountrySelection);
         CountrySelectedCommand = new Command<CountryModel>(ExecuteCountrySelectedCommand);
         InitializeComponent();
     }
